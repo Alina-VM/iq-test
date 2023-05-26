@@ -1,30 +1,29 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <AppHeader/>
   <router-view/>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
+<script>
+import AppHeader from './components/header.vue'
+import { mapState, mapMutations } from 'vuex';
+export default {
+  name: 'App',
+  components: {
+    AppHeader,
+  },
+  computed:{
+    ...mapState(['showHeaderForTest'])
+  },
+  methods: {
+     ...mapMutations(['changeHeader'])
+  },
+  mounted() {
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
   }
 }
+</script>
+<style lang="scss">
+@import './scss/common.scss';
+
 </style>
